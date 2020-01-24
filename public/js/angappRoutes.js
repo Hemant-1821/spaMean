@@ -9,9 +9,17 @@ angular.module('angappRoutes',[]).config(['$routeProvider','$locationProvider',f
       templateUrl:'views/about.html',
       controller: 'AboutController'
     })
+    .when('/read',{
+      templateUrl:'views/read.html',
+      controller:'ReadController'
+    })
     .when('/add',{
       templateUrl:'views/add.html',
       controller: 'AddController'
+    })
+    .when('/update',{
+      templateUrl:'views/update.html',
+      controller: 'UpdateController'
     })
     .when('/contact',{
       templateUrl:'views/content.html',

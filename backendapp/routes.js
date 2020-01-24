@@ -9,11 +9,20 @@ var About = require('./models/contacts');
         });
         newContact.save(function(err,contacts){
           if(err){
-            res.json({msg: 'Failed to add contact'});
+            res.json({msg:'Failed to add contact'});
           }
           else{
-            res.json({msg: 'contact added successfully'});
+            res.json({msg:'contact added successfully'});
           }
         });
+    });
+    expobj.get('/api/abouts1',function(req,res){
+      About.find((error,data)=>{
+        if(error){
+          res.send(error);
+        }
+        res.json(data);
+        console.log(data);
+      });
     });
   };
