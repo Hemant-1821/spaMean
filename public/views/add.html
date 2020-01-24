@@ -1,0 +1,27 @@
+<html>
+  <head><title>Add</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+  </head>
+
+    <body>
+  <div class="container">
+    <div class ="jumbotron">
+      <form method="post" ng-submit="send_data()">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name" ng-model="form_data.first_name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" ng-model="form_data.last_name">
+              </div>
+            </div>
+            <br>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Contact Number" ng-model="form_data.phone">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+    </body>
+</html>

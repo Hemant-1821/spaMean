@@ -2,10 +2,27 @@ var express = require('express');
 var expobj = express();
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
+var mongoose = require('mongoose');
 
 var db = require('./backendconfiguration/db');
 
 var port = process.env.PORT || 8080;
+
+mongoose.connect(db.url);
+mongoose.connection.on('connected',function(){
+  console.log("connected to db");
+});
+mongoose.connection.on('err',function(err){
+  if(err)
+    console.log("error connecting to db "+err);
+});
+mongoose.connection.on('disconnected',function(){
+  console.log("disconnected to db");
+});
+process.on('SIGINT',function(){
+  console.log('disconnected from DB through app termination');
+  process.exit(0);
+});
 
 expobj.use(bodyParser.json());
 expobj.use(bodyParser.json({type:'application/vnd.api+json'}));

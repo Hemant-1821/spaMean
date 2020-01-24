@@ -1,3 +1,3 @@
 module.exports = {
-  url : 'mongodb://localhost/mydatabasename'
+  url : 'mongodb://localhost:27017/contactlist'
 }
