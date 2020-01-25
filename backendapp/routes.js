@@ -16,13 +16,42 @@ var About = require('./models/contacts');
           }
         });
     });
-    expobj.get('/api/abouts1',function(req,res){
+    expobj.get('/api/abouts',function(req,res){
       About.find((error,data)=>{
         if(error){
           res.send(error);
         }
         res.json(data);
-        console.log(data);
       });
     });
+    expobj.put('/api/abouts/:id',function(req,res){
+      console.log('Updated Data First Name: '+req.body.first_name+'\nlast name: '+req.body.last_name+'\nContact Number: '+req.body.phone);
+      About.update({_id: req.body._id},{$set:{first_name:req.body.first_name,last_name:req.body.last_name,phone:req.body.phone}},function(err,update){
+        if(err){
+          res.json(err);
+        }
+        else{
+          res.json(update);
+        }
+      });
+    });
+      expobj.get('/api/abouts/:id',function(req,res){
+        About.find({_id:req.params.id},function(error,updata){
+          if(error){
+            res.send(error);
+          }
+          res.json(updata);
+        });
+      });
+
+      expobj.delete('/api/abouts/:id',function(req,res){
+
+        About.deleteOne({_id:req.params.id},function(error,updata){
+          if(error){
+            res.send(error);
+          }
+          res.json(updata);
+        });
+      });
+
   };

@@ -21,6 +21,10 @@ angular.module('angappRoutes',[]).config(['$routeProvider','$locationProvider',f
       templateUrl:'views/update.html',
       controller: 'UpdateController'
     })
+    .when('/update/:id',{
+      templateUrl : 'views/edit_update.html',
+      controller : 'UpdateController'
+    })
     .when('/contact',{
       templateUrl:'views/content.html',
       controller: 'ContactController'
