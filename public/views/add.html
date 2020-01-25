@@ -6,20 +6,24 @@
     <body>
   <div class="container">
     <div class ="jumbotron">
-      <form method="post" ng-submit="send_data()">
+      <form name ="myForm" novalidate method="post" ng-submit="myForm.$valid && check_data()">
             <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" value ="First name" ng-model="form_data.first_name">
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Last name" ng-model="form_data.last_name">
-              </div>
+                <div class="col">
+                  <input type="text" name="first" ng-pattern="/^[a-zA-Z]*$/"required class="form-control" placeholder="first name" ng-model="form_data.first_name">
+                  <span style="color:Red" ng-show="myForm.first.$error.pattern">Please enter alphabets only </span>
+                </div>
+                <div class="col">
+                  <input type="text" name="last" ng-pattern="/^[a-zA-Z]*$/"required class="form-control" placeholder="Last name" ng-model="form_data.last_name">
+                  <span style="color:Red" ng-show="myForm.last.$error.pattern">Please enter alphabets only</span>
+                </div>
             </div>
             <br>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Contact Number" ng-model="form_data.phone">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+              <input type="text" name="phone" class="form-control" placeholder="Contact Number" ng-pattern="/^[6-9]{1}[0-9]{9}$/"required ng-model="form_data.phone">
+              <span style="color:Red" ng-show="myForm.phone.$error.pattern">Please enter 10 digit Number starting with 6,7,8,9 only</span>
+              <!--<span ng-if="$scope.find==1" style="color:Red">Phone Number already exists!!</span>-->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
   </div>
