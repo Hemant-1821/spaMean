@@ -1,5 +1,7 @@
 angular.module('AddCtrl',[]).controller('AddController',function($scope,$http){
-
+  $scope.check_name="/^[a-zA-Z]*$/";
+  $scope.check_number="/^[6-9]{1}[0-9]{9}$/";
+  if($scope.first_name.match($scope.check_name) && $scope.last_name.match($scope.check_name) && $scope.phone.match(check_number)){
   $scope.check_data = function(){
       $http.get('/api/abouts').then(function(res){
         $scope.check_data = res.data;
@@ -15,8 +17,10 @@ angular.module('AddCtrl',[]).controller('AddController',function($scope,$http){
             })
           }
         else{
-          $scope.message = "Phone Number already exists!!";
+          alert("Phone Number already exists!!");
+          $scope.form_data.phone = "";
         }
       });
   }
+}
 });

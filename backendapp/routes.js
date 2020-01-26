@@ -45,12 +45,12 @@ var About = require('./models/contacts');
       });
 
       expobj.delete('/api/abouts/:id',function(req,res){
-
-        About.deleteOne({_id:req.params.id},function(error,updata){
+        About.deleteOne({_id:req.params.id},function(error,deletedata){
           if(error){
             res.send(error);
           }
-          res.json(updata);
+          res.json(deletedata);
+          console.log(deletedata);
         });
       });
 

@@ -7,7 +7,7 @@
     <div class="container">
       <div class="jumbotron">
         <form method="get">
-            <button ng-click="retrieve_data()" type="submit" class="btn btn-primary">Show data to update</button>
+            <button ng-click="retrieve_data()" type="submit" class="btn btn-primary">Show data</button>
               <table class="table">
                 <thead>
                   <tr>
@@ -24,7 +24,7 @@
                     <td>{{x.last_name}}</td>
                     <td>{{x.phone}}</td>
                     <td><button class="btn btn-primary"><a class="text-white" ng-href="/update/{{x._id}}">Update</a></button></td>
-                    <td><button class="btn btn-primary"><a class="text-white" ng-href="/delete/{{x._id}}">Delete</a></button></td>
+                    <td><button class="btn btn-primary"><a class="text-white" ng-click="delete_data(x._id)">Delete</a></button></td>
                   </tr>
                 </tbody>
               </table>

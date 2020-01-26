@@ -8,7 +8,6 @@ angular.module('UpdateCtrl',[]).controller('UpdateController',function($scope,$h
     };
 
     $scope.retrieve_data_ind = function(){
-      console.log("Hiii");
         $http.get('/api/abouts/'+$routeParams.id).then(function(res){
           console.log(res);
           $scope.receive_data_ind=res.data;
@@ -17,17 +16,15 @@ angular.module('UpdateCtrl',[]).controller('UpdateController',function($scope,$h
 
     $scope.update_data = function(id){
       $scope.data = $scope.receive_data_ind[0];
-
       $http.put('/api/abouts/'+id,JSON.stringify($scope.data)).then(function(res){
         console.log(res);
       });
     };
 
-    $scope.retrieve_data_ind = function(){
-      console.log("Hiii");
-        $http.delete('/api/abouts/'+$routeParams.id).then(function(res){
+    $scope.delete_data = function(id){
+        $http.delete('/api/abouts/'+id).then(function(res){
           console.log(res);
-          $scope.receive_data_ind=res.data;
         });
     };
+
 });
